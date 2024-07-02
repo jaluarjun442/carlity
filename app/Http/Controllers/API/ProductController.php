@@ -23,7 +23,7 @@ class ProductController extends Controller
             $products = Product::select('id', 'name', 'description', 'link_text', 'link_url')
                 ->where('id', $id)
                 ->where('status', 1)
-                ->get();
+                ->first();
             return response()->json($products);
         } catch (ModelNotFoundException $e) {
             return response()->json([], 404);
